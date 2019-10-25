@@ -47,3 +47,20 @@ class Neighborhood(md.Model):
 
     def __str__(self):
         return self.name
+
+class Bussines(md.Model):
+    name = md.CharField(max_length=255)
+    type = md.CharField(max_length=150)
+    neighborhood = md.ForeignKey(Neighborhood,on_delete=md.PROTECT)
+    email = md.EmailField()
+    phone_number = md.IntegerField()
+
+    class Meta:
+        verbose_name='bussines'
+        ordering=['name']
+
+    def save(Self):
+        self.save()
+
+    def __str__(self):
+        return f'{self.neighborhood} -> {self.name}'
