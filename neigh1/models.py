@@ -1,5 +1,5 @@
 from django.db import models as md
-
+from django.contrib.auth.models import User
 class Nation(md.Model):
     name = md.CharField(max_length=200)
     flag = md.URLField()
@@ -64,3 +64,23 @@ class Bussines(md.Model):
 
     def __str__(self):
         return f'{self.neighborhood} -> {self.name}'
+
+class Profile(md.Model):
+    user = md.OneToOneField(User,on_delete=md.CASCADE)
+    profile_pic=md.ImageField(upload_to='profile_pic/',blank=True,null=True)
+    display_name=md.CharField(max_length =100,blank=True,null=True)
+    neighborhood = md.ForeignKey(Neighborhood,on_delete=md.PROTECT,related_name='people',blank=True,null=True)
+    phone_number = md.IntegerField(blank=True,null=True)
+    email = md.EmailField(blank=True,null=True)
+    bussiness_type=md.BooleanField(blank=True,null=True)
+    bussineses = md.ManyToManyField(Bussines,blank=True)
+
+    class Meta:
+        verbose_name='profile'
+        ordering=['user']
+
+    def save(self):
+        self.save()
+
+    def __str__(self):
+        return f"{self.user}'s profile"
