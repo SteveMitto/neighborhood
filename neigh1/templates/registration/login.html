@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{% load static%}
+{% load bootstrap4 %}
+{% block content%}
+{% if user.is_authenticated %}
+<script type="text/javascript">
+  window.location.replace('/')
+</script>
+{% else %}
+<script type="text/javascript">
+console.log('user is not authenticated')
+</script>
+{% endif %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="container">
+        <h3>Login</h3>
+      </div>
+      <form action="{% url 'login'%}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button type="submit" name="button">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
