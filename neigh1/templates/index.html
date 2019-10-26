@@ -1,6 +1,10 @@
-{% extedns 'base.html'%}
+{%extends 'base.html'%}
 
 {% block content %}
+{{block.super}}
+<div class="container-fluid">
+
+</div>
 <h2>Welcome {{user.username}}</h2>
 
 {% endblock %}

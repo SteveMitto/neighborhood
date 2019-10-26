@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/setup.css'%}">
+<div class="fullscreen">
+  {% if user.profile.profile_pic %}]
+  <img src="{{user.profile.profile_pic.url}}" alt="">
+  {% else %}
+  <img src="https://assets.awwwards.com/assets/images/pages/user/avatar.svg" width="150px" class="circle" alt="">
+  {% endif %}
+  <br>
+  <h3>Hello {{user.username}}</h3>
+  <p>Will you be regestering a bussiness</p>
+  <div class="">
+    <button type="button" id="i_will" class="btn btn-success btn-sm">Yes i will</button>
+    <button type="button" id="i_wont" class="btn btn-danger btn-sm">Dont think so</button>
+  </div>
+</div>
+
+{% endblock %}

@@ -16,3 +16,11 @@ def signup(request):
     print("********************")
     return render(request,'registration/signup.html',context)
 # Create your views here.
+
+def index(request):
+
+    return render(request,'index.html')
+@login_required
+def setup(request):
+
+    return render(request,'setup.html')
