@@ -1,5 +1,7 @@
 from django.db import models as md
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 class Nation(md.Model):
     name = md.CharField(max_length=200)
     flag = md.URLField()
@@ -78,9 +80,6 @@ class Profile(md.Model):
     class Meta:
         verbose_name='profile'
         ordering=['user']
-
-    def save(self):
-        self.save()
 
     def __str__(self):
         return f"{self.user}'s profile"
