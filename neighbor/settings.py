@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'neigh1.apps.Neigh1Config'
+    'neigh1.apps.Neigh1Config',
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
@@ -115,11 +116,14 @@ USE_L10N = True
 USE_TZ = True
 
 
+SIGNUP_REDIRECT_URL='/accounts/login'
+LOGIN_REDIRECT_URL='/'
+LOGOUT_REDIRECT_URL='/accounts/login'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
