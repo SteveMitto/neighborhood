@@ -11,8 +11,10 @@
       <div class="container">
         <h3>Sign Up</h3>
       </div>
-      <form class="" action="{% url 'signup' %}" method="post">
+      <form action="{% url 'signup' %}" method="post">
+          {% csrf_token %}
           {% bootstrap_form form%}
+          <button type="submit">Signup</button>
       </form>
     </div>
   </div>
