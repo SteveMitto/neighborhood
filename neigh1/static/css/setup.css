@@ -1,0 +1,15 @@
+.fullscreen{
+  width:100vw;
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,.05)
+}
+.circle{
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.5);
+  box-decoration-break: slice;
+}
