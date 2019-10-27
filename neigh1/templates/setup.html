@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="container dis2">
-    <h3>Hey {{user.username.capitalize}}<br> <br>Complete User Profile to Get started</h3>
+    <h3>Complete User Profile to Get started</h3>
     <br>
 
     <!-- profile_pic
@@ -35,7 +35,7 @@ bussineses -->
   <img src="https://assets.awwwards.com/assets/images/pages/user/avatar.svg" width="150px" class="circle" alt="">
   {% endif %}
   <br>
-      <form class="col-md-5" action="{% url 'update_profile'%}" method="POST" enctype="multipart/form-data">
+      <form class="col-md-6" action="{% url 'update_profile'%}" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <label id="dpc" for="dp">
         {{form}}
@@ -46,27 +46,35 @@ bussineses -->
       <br>
   <div class="form-row ">
     <div class="col-md-6 form-group">
+      <label for="display_name"> Display Name</label>
       <input type="text" id="display_name" name="display_name" class="form-control" placeholder="Display Name" required>
     </div>
     <div class="col-md-6 form-group">
+      <label for="">Phone Number</label>
       <input type="number" id="phone_number" name="phone_number" class="form-control" placeholder="Phone Number" required>
     </div>
   </div>
-  <br>
   <div class="form-row ">
-    <div class="col-md-12 form-group">
+    <div class="col-md-6 form-group">
+      <label for="email">Email</label>
       <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
     </div>
-    <!-- <div class="col-md-6 form-group">
-      <input type="number" class="form-control" placeholder="Phone Number">
-    </div> -->
+    <div class="col-md-6 form-group">
+      <label for="neighborhood"> Neighborhood</label>
+      <input type="text" class="form-control" name="neighborhood" id="neighborhood" placeholder="Neighborhood" required>
+    </div>
   </div><br>
   <button type="submit" class="btn btn-success btn-sm btn-block">Update</button>
     </form>
   </div>
-</div>
-<div class="container dis3">
+<!-- <div class="container dis3">
+  <div class="col-md-5">
 
+    {% bootstrap_form addTown%}
+
+  </div>
+
+</div> -->
 </div>
 <script src="http://malsup.github.com/jquery.form.js"></script>
 <script type="text/javascript" src="{% static 'js/setup.js'%}">
