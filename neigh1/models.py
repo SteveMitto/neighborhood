@@ -5,9 +5,9 @@ from django.db.models.signals import post_save
 class Nation(md.Model):
     name = md.CharField(max_length=200)
     flag = md.URLField()
-    calling_codes =md.IntegerField()
-    currency=md.CharField(max_length=100)
-    symbol=md.CharField(max_length=10)
+    calling_codes =md.CharField(max_length=100,blank=True,null=True)
+    currency=md.CharField(max_length=100,blank=True,null=True)
+    symbol=md.CharField(max_length=10,blank=True,null=True)
 
 
     class Meta:
@@ -17,8 +17,6 @@ class Nation(md.Model):
     def __str__(self):
         return self.name
 
-    def save(self):
-        self.save()
 
 class Town(md.Model):
     town = md.CharField(max_length = 200)
