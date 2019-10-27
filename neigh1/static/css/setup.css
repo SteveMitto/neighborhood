@@ -1,11 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
 .fullscreen{
+  font-family: 'Source Sans Pro', sans-serif;
+  position: relative;
   width:100vw;
   height:100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0,0,0,.05)
+  background-color: rgba(0,0,0,.5);
+  color:white;
+}
+.fullscreen::before{
+  content:'';
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height:100%;
+  background-image: url('../images/map2.jpg');
+  background-size: cover;
+  z-index: -1;
+  filter: blur(2px);
+  overflow:hidden;
+  animation: zoom 79s linear infinite;
+  animation-direction: alternate;
+
+}
+@keyframes zoom {
+  from{
+    transform:scale(1);
+  }
+  to{
+    transform: scale(2);
+  }
 }
 .circle{
   border-radius: 50%;
@@ -13,3 +42,44 @@
   box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.5);
   box-decoration-break: slice;
 }
+.dis1{
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.dis1 h3{
+  font-weight: bolder;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.dis1 p{
+
+}
+.dis1 button{
+  margin-left:10px;
+}
+.dis2{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.dis2 #dpc{
+  background: white;
+  border:1px solid green;
+  border-radius: 5px;
+  padding: 0 10px;
+  color:green;
+}
+#id_profile_pic{
+  width:0;
+}
+/* .dis2 input{
+  background: transparent;
+  color:white;
+  border-width: 0 0 1px 0;
+  border-radius: 0;
+} */

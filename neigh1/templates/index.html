@@ -2,9 +2,21 @@
 
 {% block content %}
 {{block.super}}
+<br><br><br>
 <div class="container-fluid">
 
 </div>
 <h2>Welcome {{user.username}}</h2>
-
+{% if user.profile.bussiness_type == None %}
+<script type="text/javascript">
+  $("body").load('/setup')
+</script>
+{% else %}
+<p>Has decided</p>
+{%  if user.profile.bussiness_type %}
+<pre>Has a bussines</pre>
+{% else %}
+<p>User has no bussiness</p>
+{% endif %}
+{% endif %}
 {% endblock %}

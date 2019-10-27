@@ -1,20 +1,91 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load bootstrap4 %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/setup.css'%}">
 <div class="fullscreen">
-  {% if user.profile.profile_pic %}]
-  <img src="{{user.profile.profile_pic.url}}" alt="">
+  <div class="container dis1">
+    {% if user.profile.profile_pic %}
+    <img src="{{user.profile.profile_pic.url}}" width="150px" height="150px" class="circle" alt="">
+    {% else %}
+    <img src="https://assets.awwwards.com/assets/images/pages/user/avatar.svg" width="150px" class="circle" alt="">
+    {% endif %}
+    <br>
+    <h3>Hello {{user.username}}</h3>
+    <p>Do you own a bussines in your neighborhood?</p>
+    <div class="">
+      <button type="button" id="i_will" class="btn btn-success btn-sm">Yes i do</button>
+      <button type="button" id="i_wont" class="btn btn-danger btn-sm">No i Dont</button>
+    </div>
+  </div>
+  <div class="container dis2">
+    <h3>Hey {{user.username.capitalize}}<br> <br>Complete User Profile to Get started</h3>
+    <br>
+
+    <!-- profile_pic
+display_name
+neighborhood
+phone_number
+email
+bussiness_type
+bussineses -->
+  {% if user.profile.profile_pic %}
+  <img src="{{user.profile.profile_pic.url}}" width="150px" height="150px" class="circle" alt="">
   {% else %}
   <img src="https://assets.awwwards.com/assets/images/pages/user/avatar.svg" width="150px" class="circle" alt="">
   {% endif %}
   <br>
-  <h3>Hello {{user.username}}</h3>
-  <p>Will you be regestering a bussiness</p>
-  <div class="">
-    <button type="button" id="i_will" class="btn btn-success btn-sm">Yes i will</button>
-    <button type="button" id="i_wont" class="btn btn-danger btn-sm">Dont think so</button>
+      <form class="col-md-5" action="{% url 'update_profile'%}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label id="dpc" for="dp">
+        {{form}}
+        <!-- <input style="width:0"type="file" id="dp" name="dp" value=""> -->
+      </label><br>
+      <small id="image"></small>
+      <br>
+      <br>
+  <div class="form-row ">
+    <div class="col-md-6 form-group">
+      <input type="text" id="display_name" name="display_name" class="form-control" placeholder="Display Name" required>
+    </div>
+    <div class="col-md-6 form-group">
+      <input type="number" id="phone_number" name="phone_number" class="form-control" placeholder="Phone Number" required>
+    </div>
+  </div>
+  <br>
+  <div class="form-row ">
+    <div class="col-md-12 form-group">
+      <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+    </div>
+    <!-- <div class="col-md-6 form-group">
+      <input type="number" class="form-control" placeholder="Phone Number">
+    </div> -->
+  </div><br>
+  <button type="submit" class="btn btn-success btn-sm btn-block">Update</button>
+    </form>
   </div>
 </div>
+<div class="container dis3">
 
+</div>
+<script src="http://malsup.github.com/jquery.form.js"></script>
+<script type="text/javascript" src="{% static 'js/setup.js'%}">
+
+</script>
+{% if user.profile.bussiness_type == None%}
+<script type="text/javascript">
+  $(".dis1").css({'display':'flex'})
+  $(".dis2").hide()
+  $(".dis3").hide()
+</script>
+{% endif %}
+{% if user.profile.display_name %}
+<script type="text/javascript">
+  $(".dis1").hide()
+  $(".dis2").hide()
+  $(".dis3").show()
+</script>
+{% else %}
+
+{% endif %}
 {% endblock %}
