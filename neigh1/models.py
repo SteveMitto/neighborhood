@@ -43,21 +43,6 @@ class Neighborhood(md.Model):
     def __str__(self):
         return self.name
 
-class Bussines(md.Model):
-    name = md.CharField(max_length=255)
-    type = md.CharField(max_length=150)
-    bussiness_photo = md.ImageField(upload_to='bussiness_pics/',default="bussiness_pics/no-photo.jpg")
-    neighborhood = md.ForeignKey(Neighborhood,on_delete=md.PROTECT)
-    email = md.EmailField()
-    phone_number = md.IntegerField()
-
-    class Meta:
-        verbose_name='bussines'
-        ordering=['name']
-
-    def __str__(self):
-        return f'{self.neighborhood} -> {self.name}'
-
 class Profile(md.Model):
     user = md.OneToOneField(User,on_delete=md.CASCADE)
     profile_pic=md.ImageField(upload_to='profile_pic/',blank=True,null=True)
@@ -66,7 +51,6 @@ class Profile(md.Model):
     phone_number = md.IntegerField(blank=True,null=True)
     email = md.EmailField(blank=True,null=True)
     bussiness_type=md.BooleanField(blank=True,null=True)
-    bussineses = md.ManyToManyField(Bussines,blank=True)
 
     class Meta:
         verbose_name='profile'
@@ -74,3 +58,18 @@ class Profile(md.Model):
 
     def __str__(self):
         return f"{self.user}'s profile"
+
+class Bussines(md.Model):
+    name = md.CharField(max_length=255)
+    type = md.CharField(max_length=150)
+    bussiness_photo = md.ImageField(upload_to='bussiness_pics/',default="bussiness_pics/no-photo.jpg")
+    email = md.EmailField()
+    phone_number = md.IntegerField()
+    profile =md.ForeignKey(Profile,on_delete=md.CASCADE,related_name="bussines")
+
+    class Meta:
+        verbose_name='bussines'
+        ordering=['name']
+
+    def __str__(self):
+        return f'{self.neighborhood} -> {self.name}'
