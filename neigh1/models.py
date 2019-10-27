@@ -46,6 +46,7 @@ class Neighborhood(md.Model):
 class Bussines(md.Model):
     name = md.CharField(max_length=255)
     type = md.CharField(max_length=150)
+    bussiness_photo = md.ImageField(upload_to='bussiness_pics/',default="bussiness_pics/no-photo.jpg")
     neighborhood = md.ForeignKey(Neighborhood,on_delete=md.PROTECT)
     email = md.EmailField()
     phone_number = md.IntegerField()
