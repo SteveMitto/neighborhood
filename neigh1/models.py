@@ -29,21 +29,16 @@ class Town(md.Model):
     def __str__(self):
         return f'{self.nation} -> {self.town}'
 
-    def save(self):
-        self.save()
 
 class Neighborhood(md.Model):
     name = md.CharField(max_length=200)
-    location = md.ForeignKey(Town,on_delete=md.CASCADE,related_name='neighborhoods')
+    location = md.ForeignKey(Town,default=1,on_delete=md.CASCADE,related_name='neighborhoods')
     occupants = md.IntegerField()
     registered_occupants = md.IntegerField()
 
     class Meta:
         verbose_name = 'neighborhood'
         ordering = ['name']
-
-    def save(self):
-        self.save()
 
     def __str__(self):
         return self.name
@@ -58,9 +53,6 @@ class Bussines(md.Model):
     class Meta:
         verbose_name='bussines'
         ordering=['name']
-
-    def save(Self):
-        self.save()
 
     def __str__(self):
         return f'{self.neighborhood} -> {self.name}'
