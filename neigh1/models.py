@@ -51,6 +51,7 @@ class Profile(md.Model):
     phone_number = md.IntegerField(blank=True,null=True)
     email = md.EmailField(blank=True,null=True)
     bussiness_type=md.BooleanField(blank=True,null=True)
+    online = md.BooleanField(null=True)
 
     class Meta:
         verbose_name='profile'

@@ -1,0 +1,36 @@
+.neighbors{
+  display: flex;
+  width: 50%;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border:0 solid rgba(0, 0, 0, 0.05);
+  border-bottom:.5px solid rgba(0, 0, 0, 0.09);
+}
+.circle{
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.onlineTrue,
+.onlineFalse{
+  width:10px;
+  height:10px;
+  border-radius: 50%;
+  position: relative;
+  top:10px;
+  right:5px;
+}
+.onlineTrue{
+  border:.5px solid white;
+  background: lightgreen;
+}
+.onlineFalse{
+  border:.5px solid white;
+  background: lightgray;
+}
+.circle{
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.5);
+}

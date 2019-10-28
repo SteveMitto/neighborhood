@@ -6,6 +6,8 @@ from .models import Profile,Nation,Neighborhood,Bussines
 import json
 import requests
 from .forms import ProfileUpdateForm,BussinessForm
+
+
 def signup(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -19,10 +21,15 @@ def signup(request):
     }
     return render(request,'registration/signup.html',context)
 # Create your views here.
-
+@login_required
 def index(request):
-
-    return render(request,'index.html')
+    neighbor = request.user.profile.neighborhood
+    my_neighboors = Profile.objects.filter(neighborhood = neighbor).all()
+    context={
+    "neighbors":my_neighboors.exclude(user = request.user)
+    }
+    return render(request,'index.html',context)
+    
 @login_required
 
 def setup(request):

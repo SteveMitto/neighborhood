@@ -1,22 +1,38 @@
 {%extends 'base.html'%}
-
+{% load static%}
 {% block content %}
 {{block.super}}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 <br><br><br>
 <div class="container-fluid">
+  <div class="row">
+  <div class="col-md-8">
+
+    <h2>Welcome {{user.username}}</h2>
+  </div>
+  <div class="col-md-4">
+    <h4>Online Neighbors</h4>
+    <br>
+    {% for neighbor  in neighbors %}
+    <div class="neighbors">
+
+      {% if neighbor.profile_pic %}
+      <img src="{{user.profile.profile_pic.url}}" width="50px" height="50px" class="circle" alt="">
+      <span class="online{{neighbor.online}}"></span>
+      {% else %}
+      <img src="https://assets.awwwards.com/assets/images/pages/user/avatar.svg" width="30px" class="circle" alt="">
+      <span class="online{{neighbor.online}}"></span>
+      {% endif %}
+    {{neighbor.user.username.capitalize}}
+  </div>
+    {% endfor %}
+  </div>
+  </div>
 
 </div>
-<h2>Welcome {{user.username}}</h2>
 {% if user.profile.bussiness_type == None %}
 <script type="text/javascript">
   $("body").load('/setup')
 </script>
-{% else %}
-<p>Has decided</p>
-{%  if user.profile.bussiness_type %}
-<pre>Has a bussines</pre>
-{% else %}
-<p>User has no bussiness</p>
-{% endif %}
 {% endif %}
 {% endblock %}
