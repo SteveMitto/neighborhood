@@ -2,10 +2,10 @@ from django.shortcuts import render,redirect
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Nation,Neighborhood
+from .models import Profile,Nation,Neighborhood,Bussines
 import json
 import requests
-from .forms import ProfileUpdateForm
+from .forms import ProfileUpdateForm,BussinessForm
 def signup(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -26,9 +26,11 @@ def index(request):
 @login_required
 
 def setup(request):
+    buss_form=BussinessForm(instance=request.user.profile)
     form = ProfileUpdateForm(instance=request.user)
     context={
     'form':form,
+    'buss_form':buss_form
     }
     return render(request,'setup.html',context)
 
@@ -73,3 +75,15 @@ def update_profile(request):
         }
         return redirect('/setup/')
     return redirect('/setup/')
+
+def add_bussiness(request):
+    if request.method == "POST":
+        form = BussinessForm(request.POST,request.FILES,)
+        if form.is_valid():
+            form.save(commit=False)
+            data=form.cleaned_data
+            print(data['name'])
+            buss=Bussines(name=data['name'],type=data['type'],bussiness_photo=data['bussiness_photo'],email=data['email'],phone_number=data['phone_number'])
+            buss.profile= request.user.profile
+            buss.save()
+            return redirect('/')
