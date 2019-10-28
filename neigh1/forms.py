@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile
+from .models import Profile,Bussines
 
 class ProfileUpdateForm(forms.ModelForm):
 
@@ -7,3 +7,10 @@ class ProfileUpdateForm(forms.ModelForm):
         model=Profile
         exclude=('user','display_name','neighborhood','phone_number','email','bussiness_type','bussineses')
         fields=['profile_pic',]
+
+class BussinessForm(forms.ModelForm):
+
+    class Meta:
+        model=Bussines
+        exclude=('profile',)
+        fields=('bussiness_photo','name','type','email','phone_number')
