@@ -2,6 +2,7 @@ from django.db import models as md
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from ckeditor5.fields import RichTextField
 class Nation(md.Model):
     name = md.CharField(max_length=200)
     flag = md.URLField()
@@ -74,3 +75,16 @@ class Bussines(md.Model):
 
     def __str__(self):
         return f'{self.profile.neighborhood} -> {self.name}'
+
+class NeighborhoodPost(md.Model):
+    title=md.CharField(max_length=200)
+    image=md.ImageField(upload_to='neigh_post/',default='neigh_post/no-image.jpg')
+    description=md.TextField()
+    posted_on = md.DateTimeField(auto_now=True)
+    user = md.ForeignKey(User,on_delete=md.CASCADE,related_name='posts',default=1)
+
+    class Meta:
+        ordering=['posted_on']
+
+    def __str__(self):
+        return f'{self.user}'
