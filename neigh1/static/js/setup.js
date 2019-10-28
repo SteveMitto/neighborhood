@@ -7,7 +7,15 @@ $(document).ready(function(){
     console.log('stoped');
   })
   console.log('ready');
-
+  $("#id_bussiness_photo").on("change",function(){
+    var changed=$("#id_bussiness_photo").val()
+    var changed_list=changed.split("\\")
+    var changed_list_len=changed_list.length
+    console.log(changed_list[changed_list_len-1]);
+    $(".dis3 form .form-group:nth-child(1)").append(
+      '<small>'+changed_list[changed_list_len-1]+'</small>'
+    )
+  })
   $("#i_will").click(function(){
     console.log("i will");
     $.ajax({

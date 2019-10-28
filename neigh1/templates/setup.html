@@ -67,32 +67,41 @@ bussineses -->
   <button type="submit" class="btn btn-success btn-sm btn-block">Update</button>
     </form>
   </div>
-<!-- <div class="container dis3">
+<div class="container dis3">
+  <h3>Register a Bussines or Service</h3>
+  <img src="https://www.pinclipart.com/picdir/big/35-359493_shop-icon-clipart-computer-icons-shopping-retail-retailer.png" class ="circle" width="150px" alt="">
   <div class="col-md-5">
-
-    {% bootstrap_form addTown%}
+  <form class="" action="{% url 'add_bussiness' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form buss_form%}
+    <button type="submit" class="btn btn-primary btn-sm btn-block">Add bussiness</button>
+  </form>
 
   </div>
 
-</div> -->
+</div>
 </div>
 <script src="http://malsup.github.com/jquery.form.js"></script>
-<script type="text/javascript" src="{% static 'js/setup.js'%}">
-
-</script>
+<script type="text/javascript" src="{% static 'js/setup.js'%}"></script>
 {% if user.profile.bussiness_type == None%}
-<script type="text/javascript">
-  $(".dis1").css({'display':'flex'})
-  $(".dis2").hide()
-  $(".dis3").hide()
-</script>
+  <script type="text/javascript">
+    $(".dis1").css({'display':'flex'})
+    $(".dis2").hide()
+    $(".dis3").hide()
+  </script>
 {% endif %}
 {% if user.profile.display_name %}
-<script type="text/javascript">
-  $(".dis1").hide()
-  $(".dis2").hide()
-  $(".dis3").show()
-</script>
+  {% if user.profile.bussiness_type %}
+    <script type="text/javascript">
+      $(".dis1").hide()
+      $(".dis2").hide()
+      $(".dis3").show()
+    </script>
+  {% else %}
+    <script type="text/javascript">
+      window.location.replace('/')
+    </script>
+  {% endif %}
 {% else %}
 
 {% endif %}
