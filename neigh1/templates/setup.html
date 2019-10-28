@@ -3,6 +3,9 @@
 {% load bootstrap4 %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/setup.css'%}">
+<style media="screen">
+
+</style>
 <div class="fullscreen">
   <div class="container dis1">
     {% if user.profile.profile_pic %}
@@ -12,7 +15,7 @@
     {% endif %}
     <br>
     <h3>Hello {{user.username}}</h3>
-    <p>Do you own a bussines in your neighborhood?</p>
+    <p>Do you own a bussiness or a Service in your neighborhood?</p>
     <div class="">
       <button type="button" id="i_will" class="btn btn-success btn-sm">Yes i do</button>
       <button type="button" id="i_wont" class="btn btn-danger btn-sm">No i Dont</button>
@@ -83,26 +86,25 @@ bussineses -->
 </div>
 <script src="http://malsup.github.com/jquery.form.js"></script>
 <script type="text/javascript" src="{% static 'js/setup.js'%}"></script>
-{% if user.profile.bussiness_type == None%}
-  <script type="text/javascript">
-    $(".dis1").css({'display':'flex'})
+<script type="text/javascript">
+  {% if user.profile.bussiness_type == None %}
+    $(".dis1").css({
+      'display': 'flex'
+    })
     $(".dis2").hide()
     $(".dis3").hide()
-  </script>
-{% endif %}
-{% if user.profile.display_name %}
-  {% if user.profile.bussiness_type %}
-    <script type="text/javascript">
+  {% endif %}
+  {% if user.profile.display_name %}
+    {% if user.profile.bussiness_type %}
       $(".dis1").hide()
       $(".dis2").hide()
       $(".dis3").show()
-    </script>
-  {% else %}
-    <script type="text/javascript">
+    {% else %}
       window.location.replace('/')
-    </script>
-  {% endif %}
-{% else %}
+    {% endif %}
+  {% else %}
 
-{% endif %}
+  {% endif %}
+</script>
+
 {% endblock %}

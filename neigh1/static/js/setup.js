@@ -12,7 +12,7 @@ $(document).ready(function(){
     var changed_list=changed.split("\\")
     var changed_list_len=changed_list.length
     console.log(changed_list[changed_list_len-1]);
-    $(".dis3 form .form-group:nth-child(1)").append(
+    $(".dis3 form .form-group:nth-child(2)").append(
       '<small>'+changed_list[changed_list_len-1]+'</small>'
     )
   })
