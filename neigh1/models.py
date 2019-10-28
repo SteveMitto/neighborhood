@@ -72,4 +72,4 @@ class Bussines(md.Model):
         ordering=['name']
 
     def __str__(self):
-        return f'{self.neighborhood} -> {self.name}'
+        return f'{self.profile.neighborhood} -> {self.name}'
