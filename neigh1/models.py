@@ -80,11 +80,11 @@ class NeighborhoodPost(md.Model):
     title=md.CharField(max_length=200)
     image=md.ImageField(upload_to='neigh_post/',default='neigh_post/no-image.jpg')
     description=md.TextField()
-    posted_on = md.DateTimeField(auto_now=True)
-    user = md.ForeignKey(User,on_delete=md.CASCADE,related_name='posts',default=1)
+    posted_on = md.DateTimeField(auto_now_add=True)
+    user = md.ForeignKey(User,on_delete=md.CASCADE,related_name='posts')
 
     class Meta:
         ordering=['posted_on']
 
     def __str__(self):
-        return f'{self.user}'
+        return f'{self.title}'

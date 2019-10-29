@@ -10,7 +10,8 @@ urlpatterns=[
     path('setup/',views.setup,name="setup"),
     path('setup/bussines_type',views.add_type),
     path('update_profile/',views.update_profile, name="update_profile"),
-    path('add_bussiness/',views.add_bussiness, name="add_bussiness")
+    path('add_bussiness/',views.add_bussiness, name="add_bussiness"),
+    path('neig_post_save/',views.neig_post_save, name="save_post")
 ]
 
 if settings.DEBUG:

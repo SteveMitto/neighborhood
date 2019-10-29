@@ -1,18 +1,55 @@
 {%extends 'base.html'%}
 {% load static%}
+{% load bootstrap4%}
 {% block content %}
 {{block.super}}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 <br><br><br>
 <div class="container-fluid">
+  <!-- <h2>Welcome {{user.username}}</h2> -->
   <div class="row">
-  <div class="col-md-8">
+    <div class="col-md-2">
 
-    <h2>Welcome {{user.username}}</h2>
+    </div>
+  <div class="col-md-7 post-container">
+
+    {% for post in neighbourhood_post %}
+    <div class="card">
+      <div class="card-header">
+      <div class="user-details">
+
+      {% if post.user.profile_pic %}
+        <img src="{{post.user.profile.profile_pic.url}}" width="50px" height="50px" class="circle" alt="">
+      {% else %}
+        <img src="https://assets.awwwards.com/assets/images/pages/user/avatar.svg" width="30px" class="circle" alt="">
+      {% endif %}
+      <h5>{{post.user.profile.display_name}}</h5>
+    </div>
+    <div class="post-details">
+      <br>
+       <h5>{{post.title}}</h5>
+
+      <p>
+        {{post.description|safe}}
+      </p>
+      <small>
+      <small>Posted {{post.posted_on|timesince}} ago</small>
+    </small>
+    </div>
+    </div>
+    <div class="card-body">
+      <img src="{{post.image.url}}" class="card-img-top" alt="">
+    </div>
+    </div>
+    {% empty %}
+    <h3>No post in this neighbourhood</h3>
+    {% endfor%}
   </div>
-  <div class="col-md-4">
-    <h4>Online Neighbors</h4>
+  <div class="col-md-3">
     <br>
+    <div class="neighbors-parent">
+      <h4>Online Neighbors</h4>
+
     {% for neighbor  in neighbors %}
     <div class="neighbors">
 
@@ -24,12 +61,22 @@
       <span class="online{{neighbor.online}}"></span>
       {% endif %}
     {{neighbor.user.username.capitalize}}
+    <div class="neighbors-chat">Chat</div>
   </div>
     {% endfor %}
+    <form class="" action="{% url 'save_post' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token%}
+      {% bootstrap_form post_form%}
+      <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+    </form>
+  </div>
   </div>
   </div>
 
 </div>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
 {% if user.profile.bussiness_type == None %}
 <script type="text/javascript">
   $("body").load('/setup')

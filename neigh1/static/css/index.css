@@ -1,4 +1,5 @@
 .neighbors{
+  position: relative;
   display: flex;
   width: 50%;
   align-items: center;
@@ -6,6 +7,41 @@
   padding-bottom: 10px;
   border:0 solid rgba(0, 0, 0, 0.05);
   border-bottom:.5px solid rgba(0, 0, 0, 0.09);
+  transition: .5s ease-in;
+}
+.neighbors:hover .neighbors-chat{
+  display: flex;
+}
+.neighbors-chat{
+  position: relative;
+  left: 20%;
+  height: 20px;
+  top:0;
+  background: blue;
+  border:.5px solid rgba(0, 0, 0, 0.09);
+  border-radius:30px 30px 30px 30px;
+  padding: 3px 20px;
+  color:white;
+  font-size: 10px;
+  font-weight: bolder;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor:pointer;
+}
+.neighbors-chat::before{
+  content: '';
+  position: absolute;
+  top:25%;
+  left:-2px;
+  width:10px;
+  height:10px;
+  background: blue;
+  transform:rotate(-48deg);
+  border:.5px solid rgba(0, 0, 0, 0.1);
+  border-top:0;
+  border-right:0;
+
 }
 .circle{
   border-radius: 50%;
@@ -33,4 +69,37 @@
   border-radius: 50%;
   box-sizing: border-box;
   box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.5);
+}
+#id_description{
+  height: 40px;
+}
+.user-details{
+  display: flex;
+}
+.user-details h5{
+  margin-left: 20px;
+}
+.post-container{
+  display: flex;
+  padding: 0 20px;
+  justify-content: center;
+  align-items: center;
+}
+.neighbors-parent{
+  position:fixed;
+  top:70px;
+}
+.card-header{
+  background-color:rgba(0,0,0,.02);
+}
+.post-details p{
+  margin:10px 0;
+  line-height: 30px;
+}
+.card{
+  border-width: .1px .1px;
+  width: 80%;
+}
+.card-body{
+  padding: 0;
 }

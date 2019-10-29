@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'neigh1.apps.Neigh1Config',
-    'bootstrap4'
+    'bootstrap4',
+    'ckeditor5'
 ]
 
 MIDDLEWARE = [
@@ -82,6 +83,14 @@ DATABASES = {
     )
 }
 
+CKEDITOR5_CONFIGS = {
+'default': {
+'toolbar': ["undo", "redo", "bold", "italic", "blockQuote", "imageTextAlternative", "imageUpload", "heading",
+"imageStyle:full", "imageStyle:side", "link", "numberedList","emoji", "bulletedList","emoji_emojiListUrl:https://my.custom.domain/ckeditor/emoji.json`````````````````````````````"],
+'height': '300px',
+'width': '100%',
+},
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

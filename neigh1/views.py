@@ -2,10 +2,10 @@ from django.shortcuts import render,redirect
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Nation,Neighborhood,Bussines
+from .models import Profile,Nation,Neighborhood,Bussines,NeighborhoodPost
 import json
 import requests
-from .forms import ProfileUpdateForm,BussinessForm
+from .forms import ProfileUpdateForm,BussinessForm,NeigUsershPost
 
 
 def signup(request):
@@ -24,12 +24,17 @@ def signup(request):
 @login_required
 def index(request):
     neighbor = request.user.profile.neighborhood
+
+    neighbourhood_post=NeighborhoodPost.objects.filter(user__profile__neighborhood = neighbor).all()
     my_neighboors = Profile.objects.filter(neighborhood = neighbor).all()
+    post_form=NeigUsershPost(instance=request.user)
     context={
-    "neighbors":my_neighboors.exclude(user = request.user)
+    "neighbors":my_neighboors.exclude(user = request.user),
+    "post_form":post_form,
+    "neighbourhood_post":neighbourhood_post,
     }
     return render(request,'index.html',context)
-    
+
 @login_required
 
 def setup(request):
@@ -93,4 +98,14 @@ def add_bussiness(request):
             buss=Bussines(name=data['name'],type=data['type'],bussiness_photo=data['bussiness_photo'],email=data['email'],phone_number=data['phone_number'])
             buss.profile= request.user.profile
             buss.save()
+            return redirect('/')
+
+def neig_post_save(request):
+    if request.method == "POST":
+        post_form=NeigUsershPost(request.POST,request.FILES)
+        if post_form.is_valid():
+            print(request.user.pk)
+            form=post_form.save(commit=False)
+            form.user = request.user
+            form.save()
             return redirect('/')
