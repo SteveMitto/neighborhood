@@ -5,14 +5,28 @@
 {{block.super}}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 <br><br><br>
+
 <div class="container-fluid">
   <!-- <h2>Welcome {{user.username}}</h2> -->
   <div class="row">
     <div class="col-md-2">
-
+      <div class="navigation">
+        {% if user.is_authenticated %}
+        <p class="show-posts"> Posts</p><br><br>
+        <p class="show-bussinesses">Bussinesses</p><br><br>
+        <p class="show-emergency">Emergency</p><br><br>
+        <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'signup'%}">Signup</a>
+        <a href="{% url 'login'%}">Login</a>
+        {% endif %}
     </div>
-  <div class="col-md-7 post-container">
+    </div>
 
+  <div class="col-md-7 " >
+    <div class="posts-all post-container">
+
+    <small class="identifier">Posts</small>
     {% for post in neighbourhood_post %}
     <div class="card">
       <div class="card-header">
@@ -41,9 +55,70 @@
       <img src="{{post.image.url}}" class="card-img-top" alt="">
     </div>
     </div>
+  </div>
+
     {% empty %}
     <h3>No post in this neighbourhood</h3>
     {% endfor%}
+
+    <div class="bussinesses">
+      <small class="identifier">Bussines</small>
+      {% for bussines in bussinesses %}
+        <div class="bussines">
+          <div class="logo">
+            <img src="{{bussines.bussiness_photo.url}}" alt="{{bussines.bussiness_photo.url}}" width="100px" class="circle">
+          </div>
+          <div class="details">
+            <h5>{{bussines.name}}</h5>
+            <p><b>Type: </b>{{bussines.type}}</p>
+            <small><b>Call:</b> +254{{bussines.phone_number}}  <b>Email</b>: {{bussines.email}}</small>
+            <br>
+            <small><a href="/chat/bussines.profile.user.username">inquire</a></small>
+        </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="emergency">
+      <small class="identifier">Emergrncies</small>
+
+      <!-- hospital -->
+
+      {% for hospital in hospitals%}
+      <div class="bussines">
+        <div class="logo">
+          <img src="{{hospital.bussiness_photo.url}}" alt="{{hospital.bussiness_photo.url}}" width="100px" class="circle">
+        </div>
+        <div class="details">
+          <h5>{{hospital.name}}</h5>
+          <p>Type: <b>{{hospital.type}}</b></p>
+          <small>Call:+254{{hospital.phone_number}} Email: <b>{{hospital.email}}</b></small>
+          <br>
+          <small><a href="/chat/hospital.profile.user.username">inquire</a></small>
+      </div>
+      </div>
+      {% empty %}
+      <h3>No Hospital registered</h3>
+      {% endfor %}
+
+      <!-- police -->
+      <br><br>
+      {% for police in polices%}
+      <div class="bussines police">
+        <div class="logo">
+          <img src="{{police.bussiness_photo.url}}" alt="{{police.bussiness_photo.url}}" width="100px" class="circle">
+        </div>
+        <div class="details">
+          <h5>{{police.name}}</h5>
+          <p>Type: <b>{{police.type}}</b></p>
+          <small>Call:+254{{police.phone_number}} Email: <b>{{police.email}}</b></small>
+          <br>
+          <small><a href="/chat/police.profile.user.username">inquire</a></small>
+      </div>
+      </div>
+      {% empty %}
+      <h3>No Police Station registered</h3>
+      {% endfor%}
+    </div>
   </div>
   <div class="col-md-3">
     <br>
@@ -77,6 +152,9 @@
 <br><br><br><br><br>
 <br><br><br><br><br>
 <br><br><br><br><br>
+<script type="text/javascript" src="{% static 'js/reg.js'%}">
+
+</script>
 {% if user.profile.bussiness_type == None %}
 <script type="text/javascript">
   $("body").load('/setup')

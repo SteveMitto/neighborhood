@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Nation,Neighborhood,Bussines,NeighborhoodPost
+from .models import Profile,Nation,Neighborhood,Bussines,NeighborhoodPost,Bussines
 import json
 import requests
 from .forms import ProfileUpdateForm,BussinessForm,NeigUsershPost
@@ -24,7 +24,9 @@ def signup(request):
 @login_required
 def index(request):
     neighbor = request.user.profile.neighborhood
-
+    hospital = Bussines.objects.filter(type__icontains="hospital" ,profile__neighborhood = neighbor).all()
+    police = Bussines.objects.filter(type__icontains="police" ,profile__neighborhood = neighbor).all()
+    bussinesses = Bussines.objects.filter(profile__neighborhood = neighbor).all()
     neighbourhood_post=NeighborhoodPost.objects.filter(user__profile__neighborhood = neighbor).all()
     my_neighboors = Profile.objects.filter(neighborhood = neighbor).all()
     post_form=NeigUsershPost(instance=request.user)
@@ -32,6 +34,10 @@ def index(request):
     "neighbors":my_neighboors.exclude(user = request.user),
     "post_form":post_form,
     "neighbourhood_post":neighbourhood_post,
+    "neighborhood":neighbor,
+    "bussinesses":bussinesses,
+    "hospital":hospital,
+    "police":police,
     }
     return render(request,'index.html',context)
 

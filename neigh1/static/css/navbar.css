@@ -3,5 +3,12 @@ body{
     font-family: 'Source Sans Pro', sans-serif;
 }
 .top{
-  position:Fixed;
+  position: fixed;
+  z-index: 99999;
+  width: 100%;
+  background: darkblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
 }

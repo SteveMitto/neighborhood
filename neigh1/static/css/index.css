@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+}
 .neighbors{
   position: relative;
   display: flex;
@@ -8,6 +12,14 @@
   border:0 solid rgba(0, 0, 0, 0.05);
   border-bottom:.5px solid rgba(0, 0, 0, 0.09);
   transition: .5s ease-in;
+}
+.identifier{
+padding: 5px 40px;
+/* border: 1px solid rgb(0,0,150); */
+color:darkblue;
+border-bottom: none;
+border-radius: 15px  15px 0 0 ;
+font-weight: bolder;
 }
 .neighbors:hover .neighbors-chat{
   display: flex;
@@ -80,8 +92,9 @@
   margin-left: 20px;
 }
 .post-container{
-  display: flex;
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -102,4 +115,40 @@
 }
 .card-body{
   padding: 0;
+}
+.navigation{
+position: fixed;
+display: flex;
+flex-direction:column;
+justify-content: space-around;
+align-items: center;
+}
+.bussinesses{
+  width:80%;
+  padding: 20px;
+  display: none;
+}
+.emergency{
+  display: none;
+  width:80%;
+  padding: 20px;
+}
+.bussines{
+  padding: 20px;
+  display:flex;
+  border-radius: 12px;
+  box-sizing: border-box;
+  border:1px solid rgba(0,0,0,.09);
+  /* box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.5); */
+  margin:20px 0;
+  transition: .5s ease;
+}
+.bussines:hover{
+  box-shadow: 4px 3px 7px rgba(0, 0, 0, 0.5);
+}
+.bussines img{
+  margin-right: 20px;
+}
+.bussines p{
+  margin-bottom:10px;
 }
