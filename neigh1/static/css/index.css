@@ -116,12 +116,44 @@ font-weight: bolder;
 .card-body{
   padding: 0;
 }
+.nav-parent{
+  position: relative;
+  background: rgb(0, 0, 100);
+  top:-32px;
+  height:100vh;
+  padding: 0;
+  z-index:10000;
+
+}
+.nav-parent .shut{
+  position: fixed;
+  top:50px;
+  cursor: pointer;
+  z-index: 100000000000;
+  right:20px;
+  color:darkblue;
+  background: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
 .navigation{
 position: fixed;
 display: flex;
 flex-direction:column;
-justify-content: space-around;
+justify-content:;
 align-items: center;
+background: rgb(0, 0, 100);
+width: 200px;
+height:100%;
+
+}
+.navigation ul{
+  list-style: none;
+}
+.navigation ul li{
+  color:white;
 }
 .bussinesses{
   width:80%;
@@ -151,4 +183,19 @@ align-items: center;
 }
 .bussines p{
   margin-bottom:10px;
+}
+.menu {
+  position: fixed;
+  z-index:99;
+  border:2px solid rgb(0,0,110);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 7px rgba(0, 0, 110, 0.5);
+}
+.menu:hover{
+  box-shadow: 1px 1px 20px rgba(0, 0, 110, 0.5);
+
 }

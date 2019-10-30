@@ -8,28 +8,53 @@
 
 <div class="container-fluid">
   <!-- <h2>Welcome {{user.username}}</h2> -->
+  <div class="menu">
+    <img class="" src="{% static 'images/menu_icon.png'%}" alt="" width="30px">
+  </div>
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-2 nav-parent">
+      <div class="shut">
+        <p>X</p>
+      </div>
       <div class="navigation">
-        {% if user.is_authenticated %}
-        <p class="show-posts"> Posts</p><br><br>
-        <p class="show-bussinesses">Bussinesses</p><br><br>
-        <p class="show-emergency">Emergency</p><br><br>
-        <a href="{% url 'logout' %}">Logout</a>
-        {% else %}
-        <a href="{% url 'signup'%}">Signup</a>
-        <a href="{% url 'login'%}">Login</a>
-        {% endif %}
+        <div class="home">
+          <h6>Home</h6>
+        <ul>
+          <li>
+            <p class="show-posts"> Posts</p>
+          </li>
+          <li>
+            <p class="show-bussinesses">Bussinesses</p>
+          </li>
+          <li>
+            <p class="show-emergency">Emergency</p>
+          </li>
+        </ul>
+      </div>
+      <div class="home">
+        <h6>Settings</h6>
+        <ul>
+          <li>
+            <a href="{% url 'logout' %}">Logout</a>
+          </li>
+        </ul>
+      </div>
+
+    <div class="chats">
+      <h6>Chats</h6>
     </div>
+  </div>
     </div>
 
   <div class="col-md-7 " >
+
     <div class="posts-all post-container">
 
     <small class="identifier">Posts</small>
     {% for post in neighbourhood_post %}
     <div class="card">
-      <div class="card-header">
+      <div class=
+      "card-header">
       <div class="user-details">
 
       {% if post.user.profile_pic %}
@@ -149,9 +174,6 @@
   </div>
 
 </div>
-<br><br><br><br><br>
-<br><br><br><br><br>
-<br><br><br><br><br>
 <script type="text/javascript" src="{% static 'js/reg.js'%}">
 
 </script>
