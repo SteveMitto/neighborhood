@@ -104,7 +104,10 @@
             <p><b>Type: </b>{{bussines.type}}</p>
             <small><b>Call:</b> +254{{bussines.phone_number}}  <b>Email</b>: {{bussines.email}}</small>
             <br>
-            <small><a href="/chat/bussines.profile.user.username">inquire</a></small>
+            {% if user == bussines.profile.user %}
+            {% else %}
+            <small><a href="{% url 'chat' bussines.profile.user.username  %}">inquire</a></small>
+            {% endif %}
         </div>
         </div>
       {% endfor %}
