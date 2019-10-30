@@ -2,6 +2,7 @@
 body{
     font-family: 'Source Sans Pro', sans-serif;
 }
+
 .neighbors{
   position: relative;
   display: flex;
@@ -142,18 +143,40 @@ font-weight: bolder;
 position: fixed;
 display: flex;
 flex-direction:column;
-justify-content:;
-align-items: center;
 background: rgb(0, 0, 100);
 width: 200px;
 height:100%;
+padding: 0;
 
+}
+.navigation ol{
+  list-style: none;
+  padding: 0;
+
+}
+.navigation ol h6{
+  position: relative;
+  color:white;
+  background: rgba(0,0,0,.3);
+  width:100%;
+  padding: 10px 30px;
+}
+.navigation ol h6::before{
+  content:'';
+  position: absolute;
+  top:0;
+  left:0;
+  height:100%;
+  width: 20px;
+  background: black;
 }
 .navigation ul{
   list-style: none;
 }
 .navigation ul li{
   color:white;
+  padding: 10px 5px;
+
 }
 .bussinesses{
   width:80%;

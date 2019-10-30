@@ -17,32 +17,38 @@
         <p>X</p>
       </div>
       <div class="navigation">
-        <div class="home">
-          <h6>Home</h6>
-        <ul>
-          <li>
-            <p class="show-posts"> Posts</p>
-          </li>
-          <li>
-            <p class="show-bussinesses">Bussinesses</p>
-          </li>
-          <li>
-            <p class="show-emergency">Emergency</p>
-          </li>
-        </ul>
-      </div>
-      <div class="home">
-        <h6>Settings</h6>
-        <ul>
-          <li>
-            <a href="{% url 'logout' %}">Logout</a>
-          </li>
-        </ul>
-      </div>
+          <ol>
+            <li>
+              <h6>Home</h6>
+              <ul>
+                <li>
+                  <p class="show-posts"> Posts</p>
+                </li>
+                <li>
+                  <p class="show-bussinesses">Bussinesses</p>
+                </li>
+                <li>
+                  <p class="show-emergency">Emergency</p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h6>Chats</h6>
 
-    <div class="chats">
-      <h6>Chats</h6>
-    </div>
+            </li>
+            <h6>Profile</h6>
+            <li>
+              <h6>Settings</h6>
+              <ul>
+                <li>
+                  <a href="{% url 'logout' %}">Logout</a>
+                </li>
+              </ul>
+            </li>
+          </ol>
+
+
+
   </div>
     </div>
 
