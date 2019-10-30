@@ -150,6 +150,7 @@ def chating(request,username):
         message = request.POST['sent_message']
         new_msg=RealChat(chat_user1=request.user,chat_user2=receiver,chat_token=users_chat_token,message=message,chat_sender=request.user)
         new_msg.save()
+        return redirect(f'/chat/{username}')
     context={
     "chats":chats,
     "receiver":receiver

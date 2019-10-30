@@ -7,10 +7,12 @@ $(document).ready(function(){
     $(".col-md-2").hide()
     $(".col-md-3").hide()
     $(".menu").slideDown(500)
+    $(".navigation").css({'width':'100%'})
   }else{
     $(".col-md-2").show()
     $(".col-md-3").show()
     $(".menu").hide()
+    $(".navigation").css({'width':'250px'})
   }
   $(window).resize(function(){
     screen_width = $(window).width()
@@ -20,11 +22,12 @@ $(document).ready(function(){
       $(".menu").slideDown(500)
       $(".bussinesses").css({'width':'100%'})
       $(".card").css({'width':'100%'})
-      // $(".navigation").css({'width':'100%'})
+      $(".navigation").css({'width':'100%'})
     }else{
       $(".card").css({'width':'80%'})
       $(".col-md-2").show()
       $(".col-md-3").show()
+      $(".navigation").css({'width':'250px'})
       $(".menu").hide()
     }
   })
@@ -49,6 +52,7 @@ $(document).ready(function(){
       $(".bussinesses").slideDown(100)
       $(".col-md-2").slideUp(200)
     }else{
+    $(".shut").hide()
     $(".emergency").hide()
     $(".posts-all").hide()
     $(".bussinesses").slideDown(500)
