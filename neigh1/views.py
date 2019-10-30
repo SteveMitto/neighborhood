@@ -124,6 +124,7 @@ def chating_validate(request,username):
     '''
     user1 = request.user
     user2=User.objects.filter(username=username).first()
+    print('**********************',user2)
     if user2 == user1:
         return redirect('/')
     chat_key_available=ChatKey.objects.filter(user1=user1, user2=user2).first()

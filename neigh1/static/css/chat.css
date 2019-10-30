@@ -1,5 +1,5 @@
 body{
-  background: url('https://www.tokkoro.com/picsup/2502352-4k-latest-high-resolution-wallpaper.jpg');
+  background: url('https://content.knightfrank.com/property/4125898/images/4c616be4-8e58-4395-8bdf-f5f1f77db0e6-0.jpg');
   background-size:cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -10,14 +10,31 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 92.8%;
+  height: 93.8%;
+  margin-top:17px;
 
 }
 .circle{
   border-radius: 50%;
 }
 .chat-main .chat-top{
-background-color: white;
+  padding: 0 20px;
+  background-color: white;
+  color:darkblue;
+  display: flex;
+  align-items: center;
+  height:50px;
+}
+.chat-main .chat-top img{
+  margin-right: 20px;
+}
+.chat-main .chat-top .receiver-details h5{
+  margin: 0;
+}
+.chats-all{
+  height: 83.3%;
+  overflow-y: scroll;
+  box-sizing: content-box;
 }
 .chat-main .chat-main-child{
   position: relative;
@@ -25,13 +42,15 @@ background-color: white;
   background-size:contain;
   background-position: center;
   background-repeat: no-repeat;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 100, 1);
   width: 60%;
   height: 100%;
+  color:white;
 }
 .chat-message{
   position: absolute;
   bottom: 0;
+  width: 100%;
 }
 .sender{
   /* display: */
@@ -47,4 +66,17 @@ background-color: white;
   display: flex;
   justify-content: flex-start;
 
+}
+.msg_form{
+  width: 100%;
+  display: flex;
+}
+.msg_form input{
+  width: 100%;
+  border: none;
+  border-radius: 0;
+}
+.msg_form button{
+  position: relative;
+  border-radius: 0;
 }
