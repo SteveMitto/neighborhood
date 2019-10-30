@@ -63,7 +63,7 @@
       {% if post.user.profile_pic %}
         <img src="{{post.user.profile.profile_pic.url}}" width="50px" height="50px" class="circle" alt="">
       {% else %}
-        <img src="https://assets.awwwards.com/assets/images/pages/user/avatar.svg" width="30px" class="circle" alt="">
+        <img src="https://assets.awwwards.com/assets/images/pages/user/avatar.svg" width="30px" height="30px" class="circle" alt="">
       {% endif %}
       <h5>{{post.user.profile.display_name}}</h5>
     </div>
@@ -74,9 +74,18 @@
       <p>
         {{post.description|safe}}
       </p>
+      {% if  post.user == user %}
+      {% else %}
+      <a href="{% url 'chat' post.user.username%}">
+      <img src="{% static 'images/chat-flat.png' %}"  width="20px" alt="">
+      <small>chat</small>
+    </a>
+    {% endif %}
+      <br>
       <small>
       <small>Posted {{post.posted_on|timesince}} ago</small>
-    </small>
+
+    </small><br>
     </div>
     </div>
     <div class="card-body">
@@ -154,7 +163,7 @@
   <div class="col-md-3">
     <br>
     <div class="neighbors-parent">
-      <h4>Online Neighbors</h4>
+      <h4>Neighbors</h4>
 
     {% for neighbor  in neighbors %}
     <div class="neighbors">
@@ -168,14 +177,18 @@
       {% endif %}
     {{neighbor.user.username.capitalize}}
     <div class="neighbors-chat">
-    <a href="{% url 'chat' neighbor.user.username %}" target="_blank"> Chat</a>
+    <a href="{% url 'chat' neighbor.user.username %}" target="_blank">
+      <img src="{% static 'images/chat-flat.png' %}"  width="20px" alt="">
+      chat
+    </a>
      </div>
   </div>
     {% endfor %}
+    <h4>Add Post</h4>
     <form class="" action="{% url 'save_post' %}" method="post" enctype="multipart/form-data">
       {% csrf_token%}
       {% bootstrap_form post_form%}
-      <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+      <button type="submit" class="btn btn-primary btn-block btn-sm">Post</button>
     </form>
   </div>
   </div>
