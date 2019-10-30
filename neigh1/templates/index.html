@@ -61,7 +61,9 @@
       <span class="online{{neighbor.online}}"></span>
       {% endif %}
     {{neighbor.user.username.capitalize}}
-    <div class="neighbors-chat">Chat</div>
+    <div class="neighbors-chat">
+    <a href="{% url 'chat' neighbor.user.username %}" target="_blank"> Chat</a>
+     </div>
   </div>
     {% endfor %}
     <form class="" action="{% url 'save_post' %}" method="post" enctype="multipart/form-data">

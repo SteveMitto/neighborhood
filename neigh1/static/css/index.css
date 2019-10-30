@@ -43,6 +43,10 @@
   border-right:0;
 
 }
+.neighbors-chat a{
+  text-decoration: none;
+  color:white;
+}
 .circle{
   border-radius: 50%;
   box-sizing: border-box;
@@ -89,6 +93,7 @@
   position:fixed;
   top:70px;
 }
+
 .card-header{
   background-color:rgba(0,0,0,.02);
 }
