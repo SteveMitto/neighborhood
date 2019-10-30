@@ -1,0 +1,62 @@
+body{
+  background: url('https://content.knightfrank.com/property/4125898/images/4c616be4-8e58-4395-8bdf-f5f1f77db0e6-0.jpg');
+}
+li{
+  display:none;
+}
+.login-main{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  background:rgba(0,0,100,.9)
+}
+.login-main h3{
+  text-align:center;
+  margin:40px 0;
+}
+.form-group{
+  margin-bottom:30px;
+}
+.login-photo-main{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:white;
+}
+.login-photo-main h3{
+  position:relative;
+  text-transform:uppercase;
+  font-size:50px;
+  text-shadow:1px 3px 10px rgb(0,0,100);
+
+}
+form{
+  width:90%;
+}
+.login-photo-main h3::before{
+  content:'';
+  position:absolute;
+  top:-20px;
+  left:-20px;
+  z-index:-1;
+  height:5px;
+  width:30%;
+  background:rgb(255,255,255);
+  box-sizing: border-box;
+  box-shadow:1px 2px 12px rgba(0,0,100,.5)
+}
+
+.login-photo-main h3::after{
+  content:'';
+  position:absolute;
+  bottom:-10px;
+  right:-15px;
+  height:5px;
+  width:50%;
+  background:rgb(0,0,100);
+}

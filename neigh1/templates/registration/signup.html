@@ -1,21 +1,31 @@
 {%extends 'base.html'%}
 {% load bootstrap4%}
+{% load static %}
 {% block content %}
-{{block.super}}
 {% if user.is_authenticated %}
 
 {% else %}
+<link rel="stylesheet" href="{% static 'css/signup.css'%}">
 <div class="container-fluid">
   <div class="row">
-    <div class="col-m-5">
+    <div class="col-md-6 sign-main">
       <div class="container">
         <h3>Sign Up</h3>
       </div>
       <form action="{% url 'signup' %}" method="post">
           {% csrf_token %}
           {% bootstrap_form form%}
-          <button type="submit">Signup</button>
+          <button type="submit" class="btn btn-primary btn-block btn-sm">Signup</button>
       </form>
+      <div class="container text-center">
+        <small>
+          Have an account? <br>
+          <a href="{% url 'login'%}"> Login</a>
+        </small>
+      </div>
+    </div>
+    <div class="col-md-6 sign-photo-main">
+      <h3>Do You Know your Neighbours?</h3>
     </div>
   </div>
 </div>

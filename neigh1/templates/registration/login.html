@@ -11,17 +11,28 @@
 console.log('user is not authenticated')
 </script>
 {% endif %}
+<link rel="stylesheet" href="{% static 'css/login.css'%}">
+
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-6 login-main">
       <div class="container">
         <h3>Login</h3>
       </div>
       <form action="{% url 'login'%}" method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <button type="submit" name="button">Login</button>
+        <button type="submit" class="btn btn-primary btn-block btn-sm ">Login</button>
       </form>
+      <div class="container text-center">
+        <small>
+          Dont have an account? <br>
+          <a href="{% url 'signup'%}"> Signup</a>
+        </small>
+      </div>
+    </div>
+    <div class="col-md-6 login-photo-main">
+      <h3>Get to Know new Neighbours?</h3>
     </div>
   </div>
 </div>
