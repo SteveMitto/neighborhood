@@ -1,0 +1,50 @@
+body{
+  background: url('https://www.tokkoro.com/picsup/2502352-4k-latest-high-resolution-wallpaper.jpg');
+  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height:100vh;
+}
+.chat-main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 92.8%;
+
+}
+.circle{
+  border-radius: 50%;
+}
+.chat-main .chat-top{
+background-color: white;
+}
+.chat-main .chat-main-child{
+  position: relative;
+  /* background: url('https://images.unsplash.com/photo-1548164806-9709e698bfc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1551&q=80'); */
+  background-size:contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background: rgba(255, 255, 255, 0.9);
+  width: 60%;
+  height: 100%;
+}
+.chat-message{
+  position: absolute;
+  bottom: 0;
+}
+.sender{
+  /* display: */
+}
+.chat-body{
+  padding: 0 10px;
+}
+.sender{
+  display: flex;
+  justify-content: flex-end;
+}
+.receiver{
+  display: flex;
+  justify-content: flex-start;
+
+}

@@ -1,13 +1,14 @@
 from django.shortcuts import render,redirect
 from django.http import JsonResponse
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Nation,Neighborhood,Bussines,NeighborhoodPost,Bussines
+from .models import Profile,Nation,Neighborhood,Bussines,NeighborhoodPost,ChatKey,RealChat
 import json
 import requests
 from .forms import ProfileUpdateForm,BussinessForm,NeigUsershPost
-
-
+import json
+import secrets
 def signup(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -115,3 +116,43 @@ def neig_post_save(request):
             form.user = request.user
             form.save()
             return redirect('/')
+
+def chating_validate(request,username):
+    '''
+        This function checks if a certain chart have the chart token and returns
+        the chart token to a
+    '''
+    user1 = request.user
+    user2=User.objects.filter(username=username).first()
+    if user2 == user1:
+        return redirect('/')
+    chat_key_available=ChatKey.objects.filter(user1=user1, user2=user2).first()
+    chat_key_available2=ChatKey.objects.filter(user1=user2, user2=user1).first()
+    if chat_key_available == None:
+        if chat_key_available2 == None:
+            new_token = secrets.token_hex(16)
+            token_query = ChatKey.objects.filter(chat_token=new_token).first()
+            while token_query != None:
+                new_token = secretes.token_hex(16)
+            new_chat = ChatKey(user1=user1,chat_token=new_token,user2=user2)
+            new_chat.save()
+            return new_chat.chat_token
+        else:
+            return chat_key_available2.chat_token
+    return chat_key_available.chat_token
+
+
+def chating(request,username):
+    receiver=User.objects.filter(username=username).first()
+    users_chat_token=chating_validate(request,username)
+    chats=RealChat.objects.filter(chat_token = users_chat_token).all()
+    if request.method == "POST":
+        message = request.POST['sent_message']
+        new_msg=RealChat(chat_user1=request.user,chat_user2=receiver,chat_token=users_chat_token,message=message,chat_sender=request.user)
+        new_msg.save()
+    context={
+    "chats":chats,
+    "receiver":receiver
+    }
+    # return JsonResponse(json.dumps(str(users_chat_token)),safe=False)
+    return render(request,'chat.html',context)
