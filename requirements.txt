@@ -2,7 +2,7 @@ beautifulsoup4==4.8.1
 certifi==2019.9.11
 chardet==3.0.4
 dj-database-url==0.5.0
-Django==2.2.6
+Django==2.2.28
 django-bootstrap4==1.0.1
 django-ckeditor5==0.0.4
 django-js-asset==1.2.2
